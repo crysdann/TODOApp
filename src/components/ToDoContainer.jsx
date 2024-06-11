@@ -16,7 +16,7 @@ import {
   addTaskThunk,
   deleteTaskThunk,
   toggleCompleteThunk,
-} from "../redux/todoReducer";
+} from "../redux/todoThunks";
 
 const ToDoContainer = () => {
   const [input, setInput] = useState("");
