@@ -32,4 +32,18 @@ const taskSlice = createSlice({
 });
 
 export const { addTask, deleteTask, toggleComplete } = taskSlice.actions;
+
+// Thunks
+export const addTaskThunk = (taskText) => (dispatch, getState) => {
+  dispatch(addTask(taskText));
+};
+
+export const deleteTaskThunk = (taskId) => (dispatch, getState) => {
+  dispatch(deleteTask(taskId));
+};
+
+export const toggleCompleteThunk = (taskId) => (dispatch, getState) => {
+  dispatch(toggleComplete(taskId));
+};
+
 export default taskSlice.reducer;

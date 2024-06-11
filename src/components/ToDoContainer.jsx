@@ -12,7 +12,11 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask, deleteTask, toggleComplete } from "../redux/todoReducer";
+import {
+  addTaskThunk,
+  deleteTaskThunk,
+  toggleCompleteThunk,
+} from "../redux/todoReducer";
 
 const ToDoContainer = () => {
   const [input, setInput] = useState("");
@@ -25,7 +29,7 @@ const ToDoContainer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      dispatch(addTask(input));
+      dispatch(addTaskThunk(input));
       setInput("");
     }
   };
@@ -164,13 +168,13 @@ const ToDoContainer = () => {
                       taskDisplayColors[index % taskDisplayColors.length],
                   }}
                   onDoubleClick={() => {
-                    dispatch(toggleComplete(task.id));
+                    dispatch(toggleCompleteThunk(task.id));
                   }}>
                   <Typography sx={{ textTransform: "capitalize" }}>
                     {task.text}
                   </Typography>
                   <IconButton
-                    onClick={() => dispatch(deleteTask(task.id))}
+                    onClick={() => dispatch(deleteTaskThunk(task.id))}
                     sx={{ fontSize: "1.5rem", color: "white" }}>
                     <AiOutlineClose />
                   </IconButton>
